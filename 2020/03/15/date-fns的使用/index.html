@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#fighting'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>date-fns的使用 - cch‘s blog</title>
+  
+    <meta name="keywords" content="javascript">
+  
+  
+    <meta name="description" content=" 由于使用 Webpack 打包 moment.js 时，会将 moment.js 所有的 locale 全部打包进去。这样会让包的体积变大，所以建议使用date-fns替换它。">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/haoge744.github.io/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub container--flex'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main container container--flex">
+      
+        
+        <a class="logo flat-box" target="_self" href='/haoge744.github.io/'>
+          
+          
+          
+          
+            CCH‘BLOG <b><sup style='color:#3AA757'>fighting</sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/
+                  
+                  
+                  
+                    id="haoge744.github.io"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/categories/
+                  
+                  
+                  
+                    id="haoge744.github.iocategories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/tags/
+                  
+                  
+                  
+                    id="haoge744.github.iotags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/archives/
+                  
+                  
+                  
+                    id="haoge744.github.ioarchives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/friends/
+                  
+                  
+                  
+                    id="haoge744.github.iofriends"
+                  >
+                  
+                    <i class='fas fa-link fa-fw'></i>
+                  
+                  友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/about/
+                  
+                  
+                  
+                    id="haoge744.github.ioabout"
+                  >
+                  
+                    <i class='fas fa-info-circle fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/
+        
+        
+        
+          id="haoge744.github.io"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/categories/
+        
+        
+        
+          id="haoge744.github.iocategories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/tags/
+        
+        
+        
+          id="haoge744.github.iotags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/archives/
+        
+        
+        
+          id="haoge744.github.ioarchives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/friends/
+        
+        
+        
+          id="haoge744.github.iofriends"
+        >
+        
+          <i class='fas fa-link fa-fw'></i>
+        
+        友链
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/about/
+        
+        
+        
+          id="haoge744.github.ioabout"
+        >
+        
+          <i class='fas fa-info-circle fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/haoge744.github.io/2020/03/15/date-fns%E7%9A%84%E4%BD%BF%E7%94%A8/">
+        date-fns的使用
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="http://www.cch.zone" target="_blank" rel="nofollow noopener">
+    <img src="https://cdn.jsdelivr.net/gh/haoge744/cdn-rob/blog/myAvatar.png">
+    <p>cch</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/haoge744.github.io/categories/javascript/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>javascript</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2020年3月15日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p> 由于使用 Webpack 打包 moment.js 时，会将 moment.js 所有的 locale 全部打包进去。这样会让包的体积变大，所以建议使用date-fns替换它。</p>
+<a id="more"></a>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install date-fns --save</span><br></pre></td></tr></table></figure>
+<h2 id="常用api"><a href="#常用api" class="headerlink" title="常用api"></a>常用api</h2><p>date-fns的所有方法都是按模块化加载的所以需要像下面这样使用，这样做的好处是在打包的时候体积可以做到最小。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;format&#125; <span class="keyword">from</span> <span class="string">'date-fns'</span></span><br><span class="line">format(<span class="keyword">new</span> <span class="built_in">Date</span>(), <span class="string">'yyyy-MM-dd'</span>)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><h3 id="format"><a href="#format" class="headerlink" title="format"></a>format</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; format &#125; <span class="keyword">from</span> <span class="string">'date-fns'</span></span><br><span class="line"><span class="comment">// 格式化，非常常用的方法</span></span><br><span class="line"><span class="built_in">console</span>.log(format(<span class="keyword">new</span> <span class="built_in">Date</span>(), <span class="string">'yyyy-MM-dd hh:mm:ss'</span>))</span><br><span class="line"><span class="comment">// =&gt; 2019-03-15 11:19:56</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="add"><a href="#add" class="headerlink" title="add"></a>add</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 日期加 年月日小时分秒 等</span></span><br><span class="line"><span class="keyword">var</span> result = add(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2014</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">19</span>, <span class="number">50</span>), &#123;</span><br><span class="line">  years: <span class="number">2</span>,</span><br><span class="line">  months: <span class="number">9</span>,</span><br><span class="line">  weeks: <span class="number">1</span>,</span><br><span class="line">  days: <span class="number">7</span>,</span><br><span class="line">  hours: <span class="number">5</span>,</span><br><span class="line">  minutes: <span class="number">9</span>,</span><br><span class="line">  seconds: <span class="number">30</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//=&gt; Thu Jun 15 2017 15:29:20</span></span><br><span class="line"><span class="comment">// 此外还有对应的 addYears() addMonths() addDays() addHours() addMinutes() addSeconds()</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="sub"><a href="#sub" class="headerlink" title="sub"></a>sub</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当前日期减 同上</span></span><br><span class="line"><span class="keyword">const</span> result = sub(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2017</span>, <span class="number">5</span>, <span class="number">15</span>, <span class="number">15</span>, <span class="number">29</span>, <span class="number">20</span>), &#123;</span><br><span class="line">  years: <span class="number">2</span>,</span><br><span class="line">  months: <span class="number">9</span>,</span><br><span class="line">  weeks: <span class="number">1</span>,</span><br><span class="line">  days: <span class="number">7</span>,</span><br><span class="line">  hours: <span class="number">5</span>,</span><br><span class="line">  minutes: <span class="number">9</span>,</span><br><span class="line">  seconds: <span class="number">30</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//=&gt; Mon Sep 1 2014 10:19:50</span></span><br><span class="line"><span class="comment">// 也有类似的subYears()等方法同add</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="closestIndexTo-amp-closestTo"><a href="#closestIndexTo-amp-closestTo" class="headerlink" title="closestIndexTo &amp; closestTo"></a>closestIndexTo &amp; closestTo</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传入一个日期和一个日期数组，返回最接近的那一个的对象/索引</span></span><br><span class="line"><span class="keyword">var</span> dateToCompare = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2015</span>, <span class="number">8</span>, <span class="number">6</span>)</span><br><span class="line"><span class="keyword">var</span> datesArray = [</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2015</span>, <span class="number">0</span>, <span class="number">1</span>),</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2016</span>, <span class="number">0</span>, <span class="number">1</span>),</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2017</span>, <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">]</span><br><span class="line"><span class="keyword">var</span> result = closestIndexTo(dateToCompare, datesArray)</span><br><span class="line"><span class="comment">//=&gt; 1</span></span><br><span class="line"><span class="keyword">var</span> result = closestTo(dateToCompare, datesArray)</span><br><span class="line">/=&gt; <span class="number">2016</span><span class="number">-01</span><span class="number">-01</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="isToday-amp-isTomorrow-amp-isYesterday"><a href="#isToday-amp-isTomorrow-amp-isYesterday" class="headerlink" title="isToday &amp; isTomorrow &amp; isYesterday"></a>isToday &amp; isTomorrow &amp; isYesterday</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断传入的日期是否是今天/明天/昨天</span></span><br><span class="line"><span class="comment">// If today is 6 October 2014, is 6 October 14:00:00 today?</span></span><br><span class="line"><span class="keyword">var</span> result = isToday(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2014</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">14</span>, <span class="number">0</span>))</span><br><span class="line"><span class="comment">// =&gt; true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="parse"><a href="#parse" class="headerlink" title="parse"></a>parse</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 把字符串转换为Date类型 // v2.x.x</span></span><br><span class="line"><span class="comment">// 接收参数dateString formatString , referenceDate options 转换失败会返回第三个参数， 注意第三个参数是必填的</span></span><br><span class="line">parse(<span class="string">'2019-08-08'</span>, <span class="string">'yyyy-MM-dd'</span>,<span class="keyword">new</span> <span class="built_in">Date</span>())</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="isEqual"><a href="#isEqual" class="headerlink" title="isEqual"></a>isEqual</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断两个日期是否相等</span></span><br><span class="line"><span class="keyword">var</span> result = isEqual(</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Date</span>(),</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">)</span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="max-amp-min"><a href="#max-amp-min" class="headerlink" title="max &amp; min"></a>max &amp; min</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取日期数组中最大/最小的日期</span></span><br><span class="line">max([<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1989</span>, <span class="number">6</span>, <span class="number">10</span>),<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1987</span>, <span class="number">1</span>, <span class="number">11</span>)])</span><br><span class="line"><span class="comment">// =&gt; 1989, 6, 10</span></span><br><span class="line">min([<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1989</span>, <span class="number">6</span>, <span class="number">10</span>),<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1987</span>, <span class="number">1</span>, <span class="number">11</span>)])</span><br><span class="line"><span class="comment">// =&gt; 1987, 1, 11</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="startOfMonth-amp-endOfMonth"><a href="#startOfMonth-amp-endOfMonth" class="headerlink" title="startOfMonth  &amp;  endOfMonth:"></a>startOfMonth  &amp;  endOfMonth:</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取日期月份的第一天和最后一天</span></span><br><span class="line"><span class="built_in">console</span>.log(endOfMonth(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2020</span>, <span class="number">1</span>)))</span><br><span class="line"><span class="built_in">console</span>.log(startOfMonth(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2020</span>,<span class="number">1</span>)))</span><br><span class="line"><span class="comment">// Sat Feb 29 2020 23:59:59 GMT+0800 (中国标准时间)</span></span><br><span class="line"><span class="comment">// Sat Feb 01 2020 00:00:00 GMT+0800 (中国标准时间)</span></span><br><span class="line"><span class="comment">// 还有些类似startOfDay startOfToday startOfHours等的api可以方便的获取各种开始、结束时间</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="startOfWeek-amp-endOfWeek"><a href="#startOfWeek-amp-endOfWeek" class="headerlink" title="startOfWeek &amp; endOfWeek"></a>startOfWeek &amp; endOfWeek</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取传入日期的一周的第一天和最后一天， 周日是第一天 周六是最后一天</span></span><br><span class="line"><span class="built_in">console</span>.log(startOfWeek(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2020</span>, <span class="number">1</span>)))</span><br><span class="line"><span class="built_in">console</span>.log(endOfWeek(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2020</span>,<span class="number">1</span>)))</span><br><span class="line"><span class="comment">// Sun Jan 26 2020 00:00:00 GMT+0800 (中国标准时间)</span></span><br><span class="line"><span class="comment">// Sat Feb 01 2020 23:59:59 GMT+0800 (中国标准时间)</span></span><br><span class="line"><span class="comment">// tips：如果需要从周一开始 需要添加参数</span></span><br><span class="line">endOfWeek(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2020</span>,<span class="number">1</span>),&#123;<span class="attr">weekStartsOn</span>: <span class="number">1</span>&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="differenceInDays"><a href="#differenceInDays" class="headerlink" title="differenceInDays"></a>differenceInDays</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取两个时间相差多少天</span></span><br><span class="line">differenceInDays(<span class="keyword">new</span> <span class="built_in">Date</span>(),addDays(<span class="keyword">new</span> <span class="built_in">Date</span>(),<span class="number">1</span>))</span><br><span class="line"><span class="comment">// =&gt; -1</span></span><br></pre></td></tr></table></figure>
+
+<p>其他时间的方法:</p>
+<ul>
+<li>differenceInHours();获得两个时间相差的小时. </li>
+<li>differenceInMinutes(): 获得两个时间相差的分钟 </li>
+<li>differenceInMonths():获得两个时间相差月份 </li>
+<li>differenceInWeeks(): 获得两个时间相差的周数</li>
+<li>differenceInYears():获得两个时间相差的年数 </li>
+</ul>
+</li>
+<li><h3 id="isBefore-amp-isAfter"><a href="#isBefore-amp-isAfter" class="headerlink" title="isBefore &amp; isAfter"></a>isBefore &amp; isAfter</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断两个时间是否在之前、之后</span></span><br><span class="line"><span class="keyword">var</span> result = isBefore(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1989</span>, <span class="number">6</span>, <span class="number">10</span>), <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1987</span>, <span class="number">1</span>, <span class="number">11</span>))</span><br><span class="line"><span class="keyword">var</span> result = isAfter(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1989</span>, <span class="number">6</span>, <span class="number">10</span>), <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1987</span>, <span class="number">1</span>, <span class="number">11</span>))</span><br><span class="line"><span class="comment">// 1.false 2.true</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>我认为比较常用的就是上面这些，很多时候原生的api也可以满足需要。引入api按需引入就好，不要直接<code>import *</code> 。<br>更多详细的api可以去他的<a href="https://date-fns.org/" target="_blank" rel="noopener">官网</a>看。</p>
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://haoge744.github.io/2020/03/15/date-fns%E7%9A%84%E4%BD%BF%E7%94%A8/>https://haoge744.github.io/2020/03/15/date-fns%E7%9A%84%E4%BD%BF%E7%94%A8/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <fancybox><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+      
+        <fancybox><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-15T13:28:45+08:00">
+  <a class='notlink'>
+    <i class="fas fa-save" aria-hidden="true"></i>
+    <p>更新于：2020年3月15日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/haoge744.github.io/tags/javascript/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>javascript</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://haoge744.github.io/2020/03/15/date-fns%E7%9A%84%E4%BD%BF%E7%94%A8/&title=date-fns的使用 - cch‘s blog&summary= 由于使用 Webpack 打包 moment.js 时，会将 moment.js 所有的 locale 全部打包进去。这样会让包的体积变大，所以建议使用date-fns替换它。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://haoge744.github.io/2020/03/15/date-fns%E7%9A%84%E4%BD%BF%E7%94%A8/&title=date-fns的使用 - cch‘s blog&summary= 由于使用 Webpack 打包 moment.js 时，会将 moment.js 所有的 locale 全部打包进去。这样会让包的体积变大，所以建议使用date-fns替换它。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://haoge744.github.io/2020/03/15/date-fns%E7%9A%84%E4%BD%BF%E7%94%A8/&title=date-fns的使用 - cch‘s blog&summary= 由于使用 Webpack 打包 moment.js 时，会将 moment.js 所有的 locale 全部打包进去。这样会让包的体积变大，所以建议使用date-fns替换它。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/haoge744.github.io/2020/03/15/vuex%E6%8C%81%E4%B9%85%E5%8C%96%E6%8F%92%E4%BB%B6/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>vuex持久化插件</p>
+                <p class='content'>vuex里存储的也只是一个全局变量，页面刷新之后，数据则会丢失。
+
+
+编写vuex插件进行持久化, 原地址
+1234567891011121314151617181920212223242526...</p>
+              </a>
+            
+            
+              <a class='next' href='/haoge744.github.io/2020/03/14/vue%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/'>
+                <p class='title'>vue缓存问题<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>关于vue路由缓存问题之前在工作中遇到了个关于页面跳转相关的缓存问题，没想到解决起来意外的挺简单的。
+需求是这样的，有个移动webApp，下面有4个tab可以切换，然后其中有个页面有个列表，在列...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'date-fns的使用',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用api"><span class="toc-text">常用api</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#format"><span class="toc-text">format</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#add"><span class="toc-text">add</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sub"><span class="toc-text">sub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#closestIndexTo-amp-closestTo"><span class="toc-text">closestIndexTo &amp; closestTo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isToday-amp-isTomorrow-amp-isYesterday"><span class="toc-text">isToday &amp; isTomorrow &amp; isYesterday</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#parse"><span class="toc-text">parse</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isEqual"><span class="toc-text">isEqual</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#max-amp-min"><span class="toc-text">max &amp; min</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#startOfMonth-amp-endOfMonth"><span class="toc-text">startOfMonth  &amp;  endOfMonth:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#startOfWeek-amp-endOfWeek"><span class="toc-text">startOfWeek &amp; endOfWeek</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#differenceInDays"><span class="toc-text">differenceInDays</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isBefore-amp-isAfter"><span class="toc-text">isBefore &amp; isAfter</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix ">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='340px'
+      server='netease'
+      type='playlist'
+      id='3175833810'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/haoge744.github.io/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:cch_it@sina.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/haoge744"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://music.163.com/#/user/home?id=303461483"
+                class="social fas fa-headphones-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">cch‘blog</a>
+        作为主题
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="https://xaoxuu.com" target="_blank" rel="noopener">Copyright © 2017-2020 Mr. X</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/haoge744.github.io/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/BBC19066-E176-47C2-9D22-48C81EE5DF6B.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js" async></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js" async></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/haoge744.github.io/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+<script src="/haoge744.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/haoge744.github.io/live2dw/assets/z16.model.json"},"display":{"position":"right","width":250,"height":500,"hOffset":30,"vOffset":0},"react":{"opacity":0.7},"mobile":{"show":true}});</script></body>
+</html>
