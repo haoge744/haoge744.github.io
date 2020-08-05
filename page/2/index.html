@@ -353,6 +353,114 @@
       
         
   <h2 class="title">
+    <a href="/haoge744.github.io/2019/12/22/Notification%E7%9A%84%E4%BD%BF%E7%94%A8/">
+      Notification的使用
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="http://www.cch.zone" target="_blank" rel="nofollow noopener">
+    <img src="https://cdn.jsdelivr.net/gh/haoge744/cdn-rob/blog/myAvatar.png">
+    <p>cch</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/haoge744.github.io/categories/javascript/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>javascript</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2019年12月22日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard" aria-hidden="true"></i>
+      <p>字数：935字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half" aria-hidden="true"></i>
+      <p>时长：3分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>最近注意到一些网站上渐渐会弹出一个框，提示你是否显示通知，这也意味着这项功能以后会越来越普遍了，像微博、邮箱、爱奇艺等网站已经开始用起来了，如果点击同意显示通知的话，那么前台可能会开启MQ或者使用轮询的方式，去获取你关注的人或者视频有没有更新，如果有则弹起通知，更加提高了用户的体验性。<br>其实有关于通知的相关api之前也有了解过，但是并不深入，今天学习后总结一下，以便自己加深影响。</p>
+      
+        
+          <div class="button readmore">
+            <a href="/haoge744.github.io/2019/12/22/Notification%E7%9A%84%E4%BD%BF%E7%94%A8/">
+              Read More <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
     <a href="/haoge744.github.io/2019/12/14/vue%E4%BD%BF%E7%94%A8jsx/">
       vue使用jsx
     </a>
@@ -1316,114 +1424,6 @@
       <p>由于有些文件需要做权限处理，下载需要所以权限</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">downloadFile</span> (<span class="params">file</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> fileId = file.id || file.response.data.id</span><br><span class="line">    <span class="keyword">const</span> url =<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.downUrl&#125;</span>/<span class="subst">$&#123;fileId&#125;</span>`</span></span><br><span class="line">    axios(&#123;</span><br><span class="line">        method: <span class="string">'get'</span>,</span><br><span class="line">        url: url,</span><br><span class="line">        responseType: <span class="string">'arraybuffer'</span>,</span><br><span class="line">        headers: &#123;</span><br><span class="line">            Authentication: <span class="keyword">this</span>.token,</span><br><span class="line">            filename:<span class="string">'utf-8'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> fileStr = res.headers[<span class="string">'content-disposition'</span>]</span><br><span class="line">        <span class="keyword">const</span> fileName = <span class="built_in">decodeURI</span>(fileStr.substr(fileStr.indexOf(<span class="string">'filename='</span>)+<span class="number">9</span>))</span><br><span class="line">        <span class="keyword">let</span> url = <span class="built_in">window</span>.URL.createObjectURL(<span class="keyword">new</span> Blob([res.data]))</span><br><span class="line">        <span class="keyword">let</span> link = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>)</span><br><span class="line">        link.style.display = <span class="string">'none'</span></span><br><span class="line">        link.href = url</span><br><span class="line">        <span class="built_in">document</span>.body.appendChild(link)</span><br><span class="line">        link.setAttribute(<span class="string">'download'</span>, fileName)</span><br><span class="line">        link.target = <span class="string">'_blank'</span></span><br><span class="line">        link.click()</span><br><span class="line">        <span class="built_in">document</span>.body.removeChild(link); <span class="comment">//下载完成移除元素</span></span><br><span class="line">        <span class="built_in">window</span>.URL.revokeObjectURL(url); <span class="comment">//释放掉blob对象</span></span><br><span class="line">    &#125;).catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(error)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
-        
-      
-    </div>
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/haoge744.github.io/2019/10/17/Vue-inheritAttrs%E7%9A%84%E4%BD%BF%E7%94%A8/">
-      Vue inheritAttrs的使用
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-<div class='new-meta-item author'>
-  <a href="http://www.cch.zone" target="_blank" rel="nofollow noopener">
-    <img src="https://cdn.jsdelivr.net/gh/haoge744/cdn-rob/blog/myAvatar.png">
-    <p>cch</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/haoge744.github.io/categories/vue/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>vue</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：2019年10月17日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard" aria-hidden="true"></i>
-      <p>字数：1.2k字</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half" aria-hidden="true"></i>
-      <p>时长：6分钟</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><code>Vue inheritAttrs</code>诞生于vue2.4.0版本,目的是为了解决父孙组件传递参数的问题。<br>在以前如果要父组件要给孙组件传值只能给子组件设置一套值，然后再给孙组件再设置一套相同的值，这样代码太过冗余并且工作量，还有一个方法就是用<code>provide</code>和<code>inject</code>,但是貌似这个方法也不是很好，组件多的话很难控制。<br>所以vue2.4发布后解决了这个问题，还增加了关于事件向上传递的相关api <code>$listeners</code></p>
-      
-        
-          <div class="button readmore">
-            <a href="/haoge744.github.io/2019/10/17/Vue-inheritAttrs%E7%9A%84%E4%BD%BF%E7%94%A8/">
-              Read More <i class="fas fa-chevron-right"></i>
-            </a>
-          </div>
         
       
     </div>

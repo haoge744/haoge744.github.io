@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#fighting'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>vue拾遗 - cch‘s blog</title>
+  
+  
+    <meta name="description" content="记录一下vue的一些不太清楚，和之前没了解过的api。">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/haoge744.github.io/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub container--flex'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main container container--flex">
+      
+        
+        <a class="logo flat-box" target="_self" href='/haoge744.github.io/'>
+          
+          
+          
+          
+            CCH‘BLOG <b><sup style='color:#3AA757'>fighting</sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/
+                  
+                  
+                  
+                    id="haoge744.github.io"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/categories/
+                  
+                  
+                  
+                    id="haoge744.github.iocategories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/tags/
+                  
+                  
+                  
+                    id="haoge744.github.iotags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/archives/
+                  
+                  
+                  
+                    id="haoge744.github.ioarchives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/friends/
+                  
+                  
+                  
+                    id="haoge744.github.iofriends"
+                  >
+                  
+                    <i class='fas fa-link fa-fw'></i>
+                  
+                  友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/about/
+                  
+                  
+                  
+                    id="haoge744.github.ioabout"
+                  >
+                  
+                    <i class='fas fa-info-circle fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/
+        
+        
+        
+          id="haoge744.github.io"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/categories/
+        
+        
+        
+          id="haoge744.github.iocategories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/tags/
+        
+        
+        
+          id="haoge744.github.iotags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/archives/
+        
+        
+        
+          id="haoge744.github.ioarchives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/friends/
+        
+        
+        
+          id="haoge744.github.iofriends"
+        >
+        
+          <i class='fas fa-link fa-fw'></i>
+        
+        友链
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/about/
+        
+        
+        
+          id="haoge744.github.ioabout"
+        >
+        
+          <i class='fas fa-info-circle fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/haoge744.github.io/2020/08/05/vue%E6%8B%BE%E9%81%97/">
+        vue拾遗
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="http://www.cch.zone" target="_blank" rel="nofollow noopener">
+    <img src="https://cdn.jsdelivr.net/gh/haoge744/cdn-rob/blog/myAvatar.png">
+    <p>cch</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2020年8月5日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p>记录一下vue的一些不太清楚，和之前没了解过的api。</p>
+<a id="more"></a>
+
+<h2 id="hookEvent"><a href="#hookEvent" class="headerlink" title="hookEvent"></a>hookEvent</h2><p>在监听生命周期方法时，除了声明生命周期方法也可以使用以下方式</p>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">    created () &#123;</span><br><span class="line">        <span class="built_in">window</span>.addEventListener(<span class="string">'resize'</span>, <span class="keyword">this</span>.resizeHandler)</span><br><span class="line">        <span class="keyword">this</span>.$once(<span class="string">'hook:beforeDestory'</span>, () =&gt; &#123;</span><br><span class="line">            <span class="built_in">window</span>.removeEventListener(<span class="string">'resize'</span>, <span class="keyword">this</span>.resizeHanlder)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        resizeHandler() &#123;</span><br><span class="line">            <span class="comment">// brbrbr</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="监听其他组件或第三方组件的生命周期方法"><a href="#监听其他组件或第三方组件的生命周期方法" class="headerlink" title="监听其他组件或第三方组件的生命周期方法"></a>监听其他组件或第三方组件的生命周期方法</h3><p>比如说我们想监听第三方组件的<code>update</code>事件，但是内部又没有提供<code>change</code>事件, 这时候也可以直接在组件上监听其生命周期事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Component @hook:update&#x3D;&quot;componentUpdateHandler&quot;&gt;&lt;&#x2F;Component&gt;</span><br></pre></td></tr></table></figure>
+
+<p>来看下源码中是怎么调用的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">callHook</span> (<span class="params">vm: Component, hook: string</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// #7573 disable dep collection when invoking lifecycle hooks</span></span><br><span class="line">  pushTarget()</span><br><span class="line">  <span class="keyword">const</span> handlers = vm.$options[hook]</span><br><span class="line">  <span class="keyword">const</span> info = <span class="string">`<span class="subst">$&#123;hook&#125;</span> hook`</span></span><br><span class="line">  <span class="keyword">if</span> (handlers) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, j = handlers.length; i &lt; j; i++) &#123;</span><br><span class="line">      invokeWithErrorHandling(handlers[i], vm, <span class="literal">null</span>, vm, info)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (vm._hasHookEvent) &#123;</span><br><span class="line">    vm.$emit(<span class="string">'hook:'</span> + hook)</span><br><span class="line">  &#125;</span><br><span class="line">  popTarget()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>_hasHookEvent</code>为true的情况下，会调用<code>hook:</code>前缀的事件，继续看一下<code>_hasHookEvent</code>的条件是什么。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> hookRE = <span class="regexp">/^hook:/</span> </span><br><span class="line">Vue.prototype.$on = <span class="function"><span class="keyword">function</span> (<span class="params">event: string | Array&lt;string&gt;, fn: Function</span>): <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> vm: Component = <span class="keyword">this</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(event)) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, l = event.length; i &lt; l; i++) &#123;</span><br><span class="line">      vm.$on(event[i], fn)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    (vm._events[event] || (vm._events[event] = [])).push(fn)</span><br><span class="line">    <span class="comment">// optimize hook:event cost by using a boolean flag marked at registration</span></span><br><span class="line">    <span class="comment">// instead of a hash lookup</span></span><br><span class="line">    <span class="keyword">if</span> (hookRE.test(event)) &#123;</span><br><span class="line">      vm._hasHookEvent = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> vm</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以<code>hook:</code>开头的事件监听，会被当成<code>hookEvent</code>,那么在生命周期触发的同时也会触发对应的事件。</p>
+<p>所以，如果你想给一个<code>Vue</code>组件添加生命周期函数有3个办法：</p>
+<ul>
+<li>在<code>Vue</code>组件选项中添加；</li>
+<li>在模板中通过<code>@hooks:created</code>这种形式；</li>
+<li><code>vm.$on(&#39;hooks:created&#39;, cb)</code>或者 <code>vm.$once(&#39;hooks:created&#39;, cb)</code>。</li>
+</ul>
+<h2 id="使用Vue-observable管理状态"><a href="#使用Vue-observable管理状态" class="headerlink" title="使用Vue.observable管理状态"></a>使用Vue.observable管理状态</h2><p> “如果您不打算开发大型单页应用，使用 Vuex 可能是繁琐冗余的。确实是如此——如果您的应用够简单，您最好不要使用 Vuex”。这时候我们就可以使用<code>Vue2.6</code>提供的新API <code>Vue.observable</code>手动打造一个<code>Vuex</code> </p>
+<p>创建store</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="keyword">new</span> Vue.observable(&#123;</span><br><span class="line">    userName: <span class="string">''</span>,</span><br><span class="line">    roles: []</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> mutations = &#123;</span><br><span class="line">    setUserName(userName) &#123;</span><br><span class="line">        store.userName = userName</span><br><span class="line">    &#125;,</span><br><span class="line">    setRoles(roles)&#123;</span><br><span class="line">    	store.roles = roles</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>组件中使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">        &#123;&#123; userName &#125;&#125;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import &#123;store,mutations&#125; from &#39;@&#x2F;store&#39;</span><br><span class="line">export default &#123;</span><br><span class="line">    computed: &#123;</span><br><span class="line">        userName () &#123;</span><br><span class="line">            return store.userName</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    created() &#123;</span><br><span class="line">        mutations.setUserName(&#39;张三&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="watch监听"><a href="#watch监听" class="headerlink" title="$watch监听"></a>$watch监听</h2><p>在开发过程中有可能会有取消<code>watch</code>监听的要求，那么可以使用<code>$watch</code>方法取消监听</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        formData: &#123;</span><br><span class="line">            name: <span class="string">''</span>,</span><br><span class="line">            password,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    created() &#123;</span><br><span class="line">        <span class="keyword">const</span> unwatch = <span class="keyword">this</span>.$watch(<span class="string">'formData'</span>,</span><br><span class="line">          (val, oldVal) =&gt; &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(val)</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123; </span><br><span class="line">             deep: <span class="literal">true</span></span><br><span class="line">          &#125;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>$watch</code>方法返回的是一个<code>unwatch</code>方法，执行后即可取消监听。</p>
+<h2 id="函数式组件"><a href="#函数式组件" class="headerlink" title="函数式组件"></a>函数式组件</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    functional: <span class="literal">true</span>,</span><br><span class="line">    props: &#123;</span><br><span class="line">        title: <span class="string">''</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    render(h, context) &#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 函数式组件没有生命周期钩子函数，不能使用计算属性，watch等等 </p>
+<h5 id="函数式组件与普通组件的区别"><a href="#函数式组件与普通组件的区别" class="headerlink" title="函数式组件与普通组件的区别"></a>函数式组件与普通组件的区别</h5><ol>
+<li>函数式组件需要在声明组件是指定functional</li>
+<li>函数式组件不需要实例化，所以没有<code>this</code>,<code>this</code>通过<code>render</code>函数的第二个参数来代替</li>
+<li>函数式组件没有生命周期钩子函数，不能使用计算属性，watch等等</li>
+<li>函数式组件不能通过$emit对外暴露事件，调用事件只能通过<code>context.listeners.click</code>的方式调用外部传入的事件</li>
+<li>因为函数式组件是没有实例化的，所以在外部通过<code>ref</code>去引用组件时，实际引用的是<code>HTMLElement</code></li>
+<li>函数式组件的<code>props</code>可以不用显示声明，所以没有在<code>props</code>里面声明的属性都会被自动隐式解析为<code>prop</code>,而普通组件所有未声明的属性都被解析到<code>$attrs</code>里面，并自动挂载到组件根元素上面(可以通过<code>inheritAttrs</code>属性禁止)</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--在template 上面添加 functional属性--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">functional</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">"props.avatar ? props.avatar : 'default-avatar.png'"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--根据上一节第六条，可以省略声明props--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>作者：前端进击者链接：<a href="https://juejin.im/post/6844904196626448391来源：掘金著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。" target="_blank" rel="noopener">https://juejin.im/post/6844904196626448391来源：掘金著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</a></p>
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://haoge744.github.io/2020/08/05/vue%E6%8B%BE%E9%81%97/>https://haoge744.github.io/2020/08/05/vue%E6%8B%BE%E9%81%97/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <fancybox><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+      
+        <fancybox><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-05T16:54:04+08:00">
+  <a class='notlink'>
+    <i class="fas fa-save" aria-hidden="true"></i>
+    <p>更新于：2020年8月5日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://haoge744.github.io/2020/08/05/vue%E6%8B%BE%E9%81%97/&title=vue拾遗 - cch‘s blog&summary=记录一下vue的一些不太清楚，和之前没了解过的api。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://haoge744.github.io/2020/08/05/vue%E6%8B%BE%E9%81%97/&title=vue拾遗 - cch‘s blog&summary=记录一下vue的一些不太清楚，和之前没了解过的api。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://haoge744.github.io/2020/08/05/vue%E6%8B%BE%E9%81%97/&title=vue拾遗 - cch‘s blog&summary=记录一下vue的一些不太清楚，和之前没了解过的api。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/haoge744.github.io/2020/03/15/vuex%E6%8C%81%E4%B9%85%E5%8C%96%E6%8F%92%E4%BB%B6/'>
+                <p class='title'>vuex持久化插件<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>vuex里存储的也只是一个全局变量，页面刷新之后，数据则会丢失。
+
+
+编写vuex插件进行持久化, 原地址
+1234567891011121314151617181920212223242526...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+        <section id="comments">
+          <div id="lv-container" data-id="city" data-uid="MTAyMC80NjQ3NC8yMjk4NQ==">
+            <noscript><div><i class='fas fa-exclamation-triangle'>&nbsp;无法加载Livere评论系统，请确保您的网络能够正常访问。</div></noscript>
+          </div>
+        </section>
+      
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'vue拾遗',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hookEvent"><span class="toc-text">hookEvent</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本用法"><span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#监听其他组件或第三方组件的生命周期方法"><span class="toc-text">监听其他组件或第三方组件的生命周期方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Vue-observable管理状态"><span class="toc-text">使用Vue.observable管理状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#watch监听"><span class="toc-text">$watch监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数式组件"><span class="toc-text">函数式组件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#函数式组件与普通组件的区别"><span class="toc-text">函数式组件与普通组件的区别</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix ">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='340px'
+      server='netease'
+      type='playlist'
+      id='3175833810'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/haoge744.github.io/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:cch_it@sina.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/haoge744"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://music.163.com/#/user/home?id=303461483"
+                class="social fas fa-headphones-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">cch‘blog</a>
+        作为主题
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="https://xaoxuu.com" target="_blank" rel="noopener">Copyright © 2017-2020 Mr. X</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/haoge744.github.io/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/BBC19066-E176-47C2-9D22-48C81EE5DF6B.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js" async></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js" async></script>
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function(d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') { return; }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
+
+
+
+
+
+
+  
+<script src="/haoge744.github.io/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+<script src="/haoge744.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/haoge744.github.io/live2dw/assets/z16.model.json"},"display":{"position":"right","width":250,"height":500,"hOffset":30,"vOffset":0},"react":{"opacity":0.7},"mobile":{"show":true}});</script></body>
+</html>

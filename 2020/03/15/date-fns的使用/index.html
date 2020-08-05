@@ -21,7 +21,7 @@
     <meta name="keywords" content="javascript">
   
   
-    <meta name="description" content=" 由于使用 Webpack 打包 moment.js 时，会将 moment.js 所有的 locale 全部打包进去。这样会让包的体积变大，所以建议使用date-fns替换它。">
+    <meta name="description" content="由于使用 Webpack 打包 moment.js 时，会将 moment.js 所有的 locale 全部打包进去。这样会让包的体积很大，现在有个比较好的替代方案就是使用date-fns">
   
 
   <!-- feed -->
@@ -412,10 +412,10 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p> 由于使用 Webpack 打包 moment.js 时，会将 moment.js 所有的 locale 全部打包进去。这样会让包的体积变大，所以建议使用date-fns替换它。</p>
+          <p>由于使用 Webpack 打包 moment.js 时，会将 moment.js 所有的 locale 全部打包进去。这样会让包的体积很大，现在有个比较好的替代方案就是使用<code>date-fns</code></p>
 <a id="more"></a>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install date-fns --save</span><br></pre></td></tr></table></figure>
-<h2 id="常用api"><a href="#常用api" class="headerlink" title="常用api"></a>常用api</h2><p>date-fns的所有方法都是按模块化加载的所以需要像下面这样使用，这样做的好处是在打包的时候体积可以做到最小。</p>
+<h2 id="常用api"><a href="#常用api" class="headerlink" title="常用api"></a>常用api</h2><p>date-fns的所有方法都是按模块化加载的所以需要像下面这样使用，这样做的好处是对<code>webapck treeShaking</code>更加友好，然后在打包的时候体积可以做到最小。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;format&#125; <span class="keyword">from</span> <span class="string">'date-fns'</span></span><br><span class="line">format(<span class="keyword">new</span> <span class="built_in">Date</span>(), <span class="string">'yyyy-MM-dd'</span>)</span><br></pre></td></tr></table></figure>
 
 <ol>
@@ -523,10 +523,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-15T13:28:45+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-24T21:53:41+08:00">
   <a class='notlink'>
     <i class="fas fa-save" aria-hidden="true"></i>
-    <p>更新于：2020年3月15日</p>
+    <p>更新于：2020年3月24日</p>
   </a>
 </div>
 
@@ -553,7 +553,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://haoge744.github.io/2020/03/15/date-fns%E7%9A%84%E4%BD%BF%E7%94%A8/&title=date-fns的使用 - cch‘s blog&summary= 由于使用 Webpack 打包 moment.js 时，会将 moment.js 所有的 locale 全部打包进去。这样会让包的体积变大，所以建议使用date-fns替换它。"
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://haoge744.github.io/2020/03/15/date-fns%E7%9A%84%E4%BD%BF%E7%94%A8/&title=date-fns的使用 - cch‘s blog&summary=由于使用 Webpack 打包 moment.js 时，会将 moment.js 所有的 locale 全部打包进去。这样会让包的体积很大，现在有个比较好的替代方案就是使用date-fns"
           
           >
           
@@ -565,7 +565,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://haoge744.github.io/2020/03/15/date-fns%E7%9A%84%E4%BD%BF%E7%94%A8/&title=date-fns的使用 - cch‘s blog&summary= 由于使用 Webpack 打包 moment.js 时，会将 moment.js 所有的 locale 全部打包进去。这样会让包的体积变大，所以建议使用date-fns替换它。"
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://haoge744.github.io/2020/03/15/date-fns%E7%9A%84%E4%BD%BF%E7%94%A8/&title=date-fns的使用 - cch‘s blog&summary=由于使用 Webpack 打包 moment.js 时，会将 moment.js 所有的 locale 全部打包进去。这样会让包的体积很大，现在有个比较好的替代方案就是使用date-fns"
           
           >
           
@@ -577,7 +577,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://haoge744.github.io/2020/03/15/date-fns%E7%9A%84%E4%BD%BF%E7%94%A8/&title=date-fns的使用 - cch‘s blog&summary= 由于使用 Webpack 打包 moment.js 时，会将 moment.js 所有的 locale 全部打包进去。这样会让包的体积变大，所以建议使用date-fns替换它。"
+          href="http://service.weibo.com/share/share.php?url=https://haoge744.github.io/2020/03/15/date-fns%E7%9A%84%E4%BD%BF%E7%94%A8/&title=date-fns的使用 - cch‘s blog&summary=由于使用 Webpack 打包 moment.js 时，会将 moment.js 所有的 locale 全部打包进去。这样会让包的体积很大，现在有个比较好的替代方案就是使用date-fns"
           
           >
           

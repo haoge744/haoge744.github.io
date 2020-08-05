@@ -420,9 +420,111 @@
         
           
         
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/haoge744.github.io/2020/08/05/vue%E6%8B%BE%E9%81%97/">
+      vue拾遗
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="http://www.cch.zone" target="_blank" rel="nofollow noopener">
+    <img src="https://cdn.jsdelivr.net/gh/haoge744/cdn-rob/blog/myAvatar.png">
+    <p>cch</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2020年8月5日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard" aria-hidden="true"></i>
+      <p>字数：1.1k字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half" aria-hidden="true"></i>
+      <p>时长：4分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>记录一下vue的一些不太清楚，和之前没了解过的api。</p>
+      
+        
+          <div class="button readmore">
+            <a href="/haoge744.github.io/2020/08/05/vue%E6%8B%BE%E9%81%97/">
+              Read More <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -595,7 +697,7 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard" aria-hidden="true"></i>
-      <p>字数：879字</p>
+      <p>字数：895字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -623,7 +725,7 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p> 由于使用 Webpack 打包 moment.js 时，会将 moment.js 所有的 locale 全部打包进去。这样会让包的体积变大，所以建议使用date-fns替换它。</p>
+      <p>由于使用 Webpack 打包 moment.js 时，会将 moment.js 所有的 locale 全部打包进去。这样会让包的体积很大，现在有个比较好的替代方案就是使用<code>date-fns</code></p>
       
         
           <div class="button readmore">
@@ -1062,35 +1164,13 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       <p>小本本记录了一些关于js的小tips，下面整理一下发出来，内容可能会有过时。</p>
-<ol>
-<li><p>打印变量类型<br>判断是否是对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.toString.call(obj) === <span class="string">'[object Object]'</span></span><br></pre></td></tr></table></figure></li>
-<li><p>判断变量是不是无穷的</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">isFinite</span>(val)</span><br></pre></td></tr></table></figure></li>
-<li><p>删除数组元素</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">remove</span> (<span class="params">arr, item</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (arr.length) &#123;</span><br><span class="line">        <span class="keyword">var</span> index = arr.indexOf(item);</span><br><span class="line">        <span class="keyword">if</span> (index &gt; <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> arr.splice(index, <span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>replace高级应用及占位符_</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">str.replace(<span class="regexp">/-(\w)/g</span>, <span class="function"><span class="keyword">function</span> (<span class="params">_, c</span>) </span>&#123; <span class="keyword">return</span> c ? c.toUpperCase() : <span class="string">''</span>; &#125;)</span><br><span class="line"> </span><br><span class="line">str.replace(hyphenateRE, <span class="string">'-$1'</span>).toLowerCase(</span><br><span class="line"><span class="comment">// 1.$i (i:1-99) : 表示从左到右正则子表达式所匹配的文本。 // 2.$&amp;:表示与正则表达式匹配的全文本。 // 3.$`(`:切换技能键)：表示匹配字符串的左边文本。 // 4.$'(‘:单引号)：表示匹配字符串的右边文本。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 5.$$：表示$转移。</span></span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">5. // Firefox has a "watch" function on Object.prototype...</span></span><br><span class="line"><span class="string">火狐浏览器对象的原型链上都有watch函数</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">6. void 0 得到纯正的undefined</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">7. 常见的 macro task 有 setTimeout、MessageChannel、postMessage、setImmediate。而常见的 micro task 有 MutationObsever 和 Promise.then。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">8. DocumentFragment </span></span><br><span class="line"><span class="string">documentFragment的作用是创建临时的dom节点，当append的时候才真正渲染dom从而可以提升效率</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span> javascript</span><br><span class="line"><span class="built_in">window</span>.requestAnimationFrame(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> fragment = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; pageCount; i++)&#123;</span><br><span class="line">            <span class="keyword">let</span> li = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);</span><br><span class="line">            li.innerText = curIndex + i + <span class="string">' : '</span> + ~~(<span class="built_in">Math</span>.random() * total)</span><br><span class="line">            fragment.appendChild(li)</span><br><span class="line">        &#125;</span><br><span class="line">        ul.appendChild(fragment)</span><br><span class="line">        loop(curTotal - pageCount,curIndex + pageCount)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取元素离顶部的距离</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'aa'</span>).getBoundingClientRect().top</span><br></pre></td></tr></table></figure></li>
-<li><p>window.scrollY 页面滚动y距离</p>
-</li>
-<li><p>获取对象类型属性</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> _toString = <span class="built_in">Object</span>.prototype.toString</span><br><span class="line">            <span class="function"><span class="keyword">function</span> <span class="title">toRawType</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> _toString.call(value).slice(<span class="number">8</span>, <span class="number">-1</span>)</span><br><span class="line">            &#125;</span><br><span class="line"><span class="built_in">console</span>.log(toRawType(&#123;&#125;))<span class="comment">//Object</span></span><br></pre></td></tr></table></figure></li>
-<li><p>字符串占位符</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>.prototype.format = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">arguments</span>.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">var</span> param = <span class="built_in">arguments</span>[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">var</span> s = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span>(param) == <span class="string">'object'</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> param)</span><br><span class="line">            s = s.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"\\&#123;"</span> + key + <span class="string">"\\&#125;"</span>, <span class="string">"g"</span>), param[key]);</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="built_in">arguments</span>.length; i++)</span><br><span class="line">            s = s.replace(<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"\\&#123;"</span> + i + <span class="string">"\\&#125;"</span>, <span class="string">"g"</span>), <span class="built_in">arguments</span>[i]);</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"&#123;one&#125;&#123;two&#125;&#123;three&#125;"</span>.format(&#123;<span class="attr">one</span>: <span class="string">"1"</span>,<span class="attr">two</span>: <span class="string">"2"</span>,<span class="attr">three</span>: <span class="string">"3"</span>&#125;); <span class="comment">//123</span></span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">"&#123;0&#125; &#123;1&#125; &#123;2&#125;"</span>.format(<span class="string">"how"</span>,<span class="string">"are"</span>,<span class="string">"you"</span>); <span class="comment">//how are you</span></span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">13. 如果需要在数组循环时跳出循环 推荐使用every函数而不是forEacth</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">14. !! 的妙用</span></span><br><span class="line"><span class="string">如果需要判断一个对象是否是空 可以使用</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span> javascript</span><br><span class="line"><span class="keyword">let</span> required = !!obj</span><br><span class="line"><span class="comment">// 而不是</span></span><br><span class="line"><span class="keyword">if</span> (obj) &#123;</span><br><span class="line">  <span class="keyword">let</span> required = <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>map使用await异步函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> onGetLocation(datas)&#123;</span><br><span class="line">    <span class="keyword">let</span> res = <span class="keyword">await</span> <span class="built_in">Promise</span>.all(datas.map(<span class="keyword">async</span> (item) =&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">await</span> <span class="keyword">this</span>.convertFrom( [item.lon, item.lat])</span><br><span class="line">    &#125;))</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">        pathSimplifierData: res</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">convertFrom(point, type = <span class="string">'gps'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">window</span>.AMap.convertFrom(point,type, (status,result) =&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span>(result.info === <span class="string">'ok'</span>) &#123;</span><br><span class="line">            resolve ( [result.locations[<span class="number">0</span>].lng,result.locations[<span class="number">0</span>].lat])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="16">
-<li>是否js原生方法<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isNative</span>(<span class="params">Ctor</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> Ctor === <span class="string">'function'</span> &amp;&amp; <span class="regexp">/native code/</span>.test(Ctor.toString())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
       
+        
+          <div class="button readmore">
+            <a href="/haoge744.github.io/2020/01/18/jsTips/">
+              Read More <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
         
       
     </div>
