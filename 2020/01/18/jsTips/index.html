@@ -440,9 +440,13 @@
 </li>
 </ol>
 <ol start="16">
-<li>是否js原生方法<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isNative</span>(<span class="params">Ctor</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> Ctor === <span class="string">'function'</span> &amp;&amp; <span class="regexp">/native code/</span>.test(Ctor.toString())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>是否js原生方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isNative</span>(<span class="params">Ctor</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> Ctor === <span class="string">'function'</span> &amp;&amp; <span class="regexp">/native code/</span>.test(Ctor.toString())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串数字转千位符</p>
+</li>
 </ol>
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">thousandth</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.replace(<span class="regexp">/\d(?=(?:\d&#123;3&#125;)+(?:\.\d+|$))/g</span>, <span class="string">'$&amp;,'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
             <br>
             
