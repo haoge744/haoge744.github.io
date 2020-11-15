@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#fighting'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>vue插件开发 - cch‘s blog</title>
+  
+    <meta name="keywords" content="vue">
+  
+  
+    <meta name="description" content="Vue插件化我们注意到在使用一些Vuex、Vue-router或者是像element-ui等库的时候。 使用到的Vue.use()方法。在调用use方法内部做了哪些事呢，还有为什么Vue.use(element-ui) 就可以使用el开头的组件了呢。">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/haoge744.github.io/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub container--flex'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main container container--flex">
+      
+        
+        <a class="logo flat-box" target="_self" href='/haoge744.github.io/'>
+          
+          
+          
+          
+            CCH‘BLOG <b><sup style='color:#3AA757'>fighting</sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/
+                  
+                  
+                  
+                    id="haoge744.github.io"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/categories/
+                  
+                  
+                  
+                    id="haoge744.github.iocategories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/tags/
+                  
+                  
+                  
+                    id="haoge744.github.iotags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/archives/
+                  
+                  
+                  
+                    id="haoge744.github.ioarchives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/friends/
+                  
+                  
+                  
+                    id="haoge744.github.iofriends"
+                  >
+                  
+                    <i class='fas fa-link fa-fw'></i>
+                  
+                  友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/haoge744.github.io/about/
+                  
+                  
+                  
+                    id="haoge744.github.ioabout"
+                  >
+                  
+                    <i class='fas fa-info-circle fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/
+        
+        
+        
+          id="haoge744.github.io"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/categories/
+        
+        
+        
+          id="haoge744.github.iocategories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/tags/
+        
+        
+        
+          id="haoge744.github.iotags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/archives/
+        
+        
+        
+          id="haoge744.github.ioarchives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/friends/
+        
+        
+        
+          id="haoge744.github.iofriends"
+        >
+        
+          <i class='fas fa-link fa-fw'></i>
+        
+        友链
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/haoge744.github.io/about/
+        
+        
+        
+          id="haoge744.github.ioabout"
+        >
+        
+          <i class='fas fa-info-circle fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/haoge744.github.io/2020/02/15/vue%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/">
+        vue插件开发
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="http://www.cch.zone" target="_blank" rel="nofollow noopener">
+    <img src="https://cdn.jsdelivr.net/gh/haoge744/cdn-rob/blog/myAvatar.png">
+    <p>cch</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/haoge744.github.io/categories/vue/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>vue</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2020年2月15日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <h2 id="Vue插件化"><a href="#Vue插件化" class="headerlink" title="Vue插件化"></a>Vue插件化</h2><p>我们注意到在使用一些Vuex、Vue-router或者是像element-ui等库的时候。 使用到的<code>Vue.use()</code>方法。在调用use方法内部做了哪些事呢，还有为什么Vue.use(element-ui) 就可以使用el开头的组件了呢。</p>
+<a id="more"></a>
+
+<p><code>Vue.use</code>方法的形参是一个函数，或者一个对象，为对象时，需要有一个叫<code>install</code>的方法，还有一个可选参数<code>options</code>，Vue在初始化时会调用<code>use</code>方法接收的对应的方法，并传入<code>Vue</code>对象,和<code>options</code>(如果有的话)，那么我们就可以利用Vue做全局组件、指令的注册:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myPlugin = &#123;&#125;</span><br><span class="line">myPlugin.install = <span class="function"><span class="keyword">function</span> (<span class="params">Vue, options</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 判断插件是否已经注册</span></span><br><span class="line">    <span class="keyword">if</span> (myPlugin.install.installed) <span class="keyword">return</span></span><br><span class="line">    </span><br><span class="line">    Vue.prototype.ss = <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="comment">// 注册全局方法</span></span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> component = Vue.extend(&#123;</span><br><span class="line">        propsData: &#123;</span><br><span class="line">         	<span class="comment">// propData: ...  </span></span><br><span class="line">        &#125;,</span><br><span class="line">        template: <span class="string">`&lt;li&gt;&#123;&#123; text &#125;&#125;&lt;/li&gt;`</span>,<span class="comment">// 也可以使用render</span></span><br><span class="line">        data () &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123; <span class="attr">text</span>: <span class="string">'123'</span> &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    Vue.component(<span class="string">'component-name'</span>, component)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 注册自定义指令</span></span><br><span class="line">    Vue.directive(<span class="string">'my-directive'</span>, &#123;</span><br><span class="line">        bind (el, binding, vnode, oldVnode) &#123;</span><br><span class="line">            <span class="comment">// something</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    Vue.mixin(&#123; <span class="comment">// 混入全局对象 可以混入data和生命周期方法</span></span><br><span class="line">        data () &#123;</span><br><span class="line">            aaa: <span class="string">'12'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        created() &#123;</span><br><span class="line">            <span class="comment">// dosomething</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)   </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> myPlugin</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加全局插件二"><a href="#添加全局插件二" class="headerlink" title="添加全局插件二"></a>添加全局插件二</h3><p>创建组件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;el-dialog</span><br><span class="line">      width=<span class="string">"70%"</span></span><br><span class="line">      top=<span class="string">"7vh"</span></span><br><span class="line">      :visible.sync=<span class="string">"dialogFormVisible"</span></span><br><span class="line">      :close-on-click-modal=<span class="string">"false"</span></span><br><span class="line">      :show-close=<span class="string">"false"</span></span><br><span class="line">    &gt;</span><br><span class="line">      &lt;div slot=<span class="string">"title"</span>&gt;</span><br><span class="line">        &lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"result-check-tips"</span>&gt;&#123;&#123;title&#125;&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">      &lt;c-table</span><br><span class="line">        :isPage=<span class="string">"false"</span></span><br><span class="line">        :data=<span class="string">"list"</span></span><br><span class="line">        :columns=<span class="string">"header"</span></span><br><span class="line">        dragTableKey=<span class="string">"dragTableKeyCheckResult"</span></span><br><span class="line">      &gt;</span><br><span class="line">        &lt;template slot=<span class="string">"num"</span> slot-scope=<span class="string">"item"</span>&gt;</span><br><span class="line">          &lt;div&gt;&#123;&#123;item.bodyItemIndex+<span class="number">1</span>&#125;&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>template&gt;</span><br><span class="line">      &lt;<span class="regexp">/c-table&gt;</span></span><br><span class="line"><span class="regexp">      &lt;div slot="footer" class="dialog-footer"&gt;</span></span><br><span class="line"><span class="regexp">        &lt;el-button @click="cancel" size="mini"&gt;返 回&lt;/</span>el-button&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>el-dialog&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      dialogFormVisible: <span class="literal">false</span>,</span><br><span class="line">      title: <span class="string">""</span>,</span><br><span class="line">      list: [],</span><br><span class="line">      header: []</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    getProductCheckResult(options) &#123;</span><br><span class="line">     <span class="keyword">this</span>.type=options.type;</span><br><span class="line">      <span class="keyword">this</span>.title = options.msg;</span><br><span class="line">      <span class="keyword">this</span>.list = options.data;</span><br><span class="line">      <span class="keyword">this</span>.dialogFormVisible = <span class="literal">true</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    cancel() &#123;</span><br><span class="line">      <span class="keyword">this</span>.dialogFormVisible = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// productCheckResult.js文件</span></span><br><span class="line"><span class="keyword">import</span> productCheckResult <span class="keyword">from</span> <span class="string">'./productCheckResult.vue'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  install: <span class="function"><span class="keyword">function</span> (<span class="params">Vue</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> productCheckResultInstance = Vue.extend(productCheckResult)</span><br><span class="line">    <span class="keyword">let</span> productCheckResultInit;</span><br><span class="line">    <span class="keyword">const</span> initInstance = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 实例化vue实例</span></span><br><span class="line">      productCheckResultInit = <span class="keyword">new</span> productCheckResultInstance();</span><br><span class="line">      <span class="keyword">let</span> productCheckResultEl = productCheckResultInit.$mount().$el;</span><br><span class="line">      <span class="built_in">document</span>.body.appendChild(productCheckResultEl);</span><br><span class="line">    &#125;;</span><br><span class="line">    Vue.prototype.$Dialog = &#123;</span><br><span class="line">      getProductCheckResult(options) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!productCheckResultInit) &#123;</span><br><span class="line">          initInstance();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(options)</span><br><span class="line">        productCheckResultInit.getProductCheckResult(options)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 在main.js中注册 省略...</span></span><br></pre></td></tr></table></figure>
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://haoge744.github.io/2020/02/15/vue%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/>https://haoge744.github.io/2020/02/15/vue%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <fancybox><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+      
+        <fancybox><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-15T22:06:55+08:00">
+  <a class='notlink'>
+    <i class="fas fa-save" aria-hidden="true"></i>
+    <p>更新于：2020年2月15日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/haoge744.github.io/tags/vue/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>vue</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://haoge744.github.io/2020/02/15/vue%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/&title=vue插件开发 - cch‘s blog&summary=Vue插件化我们注意到在使用一些Vuex、Vue-router或者是像element-ui等库的时候。 使用到的Vue.use()方法。在调用use方法内部做了哪些事呢，还有为什么Vue.use(element-ui) 就可以使用el开头的组件了呢。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://haoge744.github.io/2020/02/15/vue%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/&title=vue插件开发 - cch‘s blog&summary=Vue插件化我们注意到在使用一些Vuex、Vue-router或者是像element-ui等库的时候。 使用到的Vue.use()方法。在调用use方法内部做了哪些事呢，还有为什么Vue.use(element-ui) 就可以使用el开头的组件了呢。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://haoge744.github.io/2020/02/15/vue%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/&title=vue插件开发 - cch‘s blog&summary=Vue插件化我们注意到在使用一些Vuex、Vue-router或者是像element-ui等库的时候。 使用到的Vue.use()方法。在调用use方法内部做了哪些事呢，还有为什么Vue.use(element-ui) 就可以使用el开头的组件了呢。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/haoge744.github.io/2020/03/14/vue%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>vue缓存问题</p>
+                <p class='content'>关于vue路由缓存问题之前在工作中遇到了个关于页面跳转相关的缓存问题，没想到解决起来意外的挺简单的。
+需求是这样的，有个移动webApp，下面有4个tab可以切换，然后其中有个页面有个列表，在列...</p>
+              </a>
+            
+            
+              <a class='next' href='/haoge744.github.io/2020/02/01/express%E8%AE%BE%E7%BD%AE%E8%B7%A8%E5%9F%9F%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89Header/'>
+                <p class='title'>express设置跨域和自定义Header<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>有些时候服务器和前端服务器部署在不同的地方，这个时候需要处理跨域问题，而且为了安全，一些接口必须要传token才能访问通过，可以把它放在header中。
+
+
+express的设置express设...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+        <section id="comments">
+          <div id="lv-container" data-id="city" data-uid="MTAyMC80NjQ3NC8yMjk4NQ==">
+            <noscript><div><i class='fas fa-exclamation-triangle'>&nbsp;无法加载Livere评论系统，请确保您的网络能够正常访问。</div></noscript>
+          </div>
+        </section>
+      
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'vue插件开发',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue插件化"><span class="toc-text">Vue插件化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加全局插件二"><span class="toc-text">添加全局插件二</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix ">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='340px'
+      server='netease'
+      type='playlist'
+      id='3175833810'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/haoge744.github.io/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:cch_it@sina.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/haoge744"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://music.163.com/#/user/home?id=303461483"
+                class="social fas fa-headphones-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://volantis.js.org/" target="_blank" class="codename">cch‘blog</a>
+        作为主题
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="https://xaoxuu.com" target="_blank" rel="noopener">Copyright © 2017-2020 Mr. X</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/haoge744.github.io/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/BBC19066-E176-47C2-9D22-48C81EE5DF6B.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js" async></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js" async></script>
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function(d, s) {
+      var j, e = d.getElementsByTagName(s)[0];
+      if (typeof LivereTower === 'function') { return; }
+      j = d.createElement(s);
+      j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+      j.async = true;
+      e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  </script>
+
+
+
+
+
+
+  
+<script src="/haoge744.github.io/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+<script src="/haoge744.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/haoge744.github.io/live2dw/assets/z16.model.json"},"display":{"position":"right","width":250,"height":500,"hOffset":30,"vOffset":0},"react":{"opacity":0.7},"mobile":{"show":true}});</script></body>
+</html>
